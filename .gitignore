@@ -1,0 +1,21 @@
+# Local toolchains, caches, and build outputs
+.tooling/
+.cache/
+/medproof
+/medproof.exe
+/medproof.test
+*.out
+
+# Secrets and local registry keys
+.env
+.env.*
+/keys/
+/configs/registry.json
+
+# Optional or generated datasets and experiment output
+/data/
+/results/
+/reports/
+/deliverables/
+__pycache__/
+*.py[cod]

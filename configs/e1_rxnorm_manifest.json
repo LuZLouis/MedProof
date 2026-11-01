@@ -1,0 +1,25 @@
+{
+  "manifest_version": "medproof-e1-rxnorm-v1",
+  "status": "frozen_rxnorm_prescribable_product_workloads",
+  "terminology_release": "RxNorm Current Prescribable Content 2026-10-05",
+  "source_archive": "data/public_sources/RxNorm_full_prescribe_10052026.zip",
+  "source_md5": "a3bfab544c6a67c127ebcd10ab914aa9",
+  "frozen_workloads": "data/public_sources/rxnorm_prescribable_20261005_workloads.json",
+  "seeds": [11, 23, 37, 53, 71],
+  "profiles": 38,
+  "records": 190,
+  "factor_dimensions": {
+    "S": [16, 32, 64, 128],
+    "m": [4, 8, 16, 32],
+    "q": [1, 2, 4],
+    "capacity_boundary": [
+      {"S": 16, "m": 4, "u": 4, "h": 4, "q": 1},
+      {"S": 16, "m": 8, "u": 8, "h": 4, "q": 2},
+      {"S": 32, "m": 16, "u": 16, "h": 8, "q": 2},
+      {"S": 64, "m": 32, "u": 16, "h": 8, "q": 2},
+      {"S": 128, "m": 32, "u": 16, "h": 8, "q": 2}
+    ]
+  },
+  "selection_policy": "Products are unique RxNorm SCD concepts; ingredient sets are derived from RXNREL paths SCD->SCDC->IN plus direct SCD->IN ingredients_of. Seeded selection meets each feasible profile exactly. Product list structure and synthetic allergy alert values are experimental inputs, not observed prescriptions or patients.",
+  "full_run_requires_explicit_user_approval": true
+}

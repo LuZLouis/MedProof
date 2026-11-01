@@ -1,0 +1,22 @@
+{
+  "manifest_version": "medproof-e2-v1",
+  "status": "completed_synthetic_comparison_sparse_all_workloads",
+  "seeds": [11, 23, 37, 53, 71],
+  "workload_source": "legal_synthetic_fixture",
+  "workloads": [
+    {"name":"single_ingredient_low_reuse","m":8,"u":8,"h":8,"q":1},
+    {"name":"combination_high_ingredient_reuse","m":8,"u":8,"h":4,"q":4},
+    {"name":"complete_class_reuse","m":8,"u":8,"h":2,"q":4},
+    {"name":"mode_boundary_candidate","m":8,"u":8,"h":4,"q":2}
+  ],
+  "baselines": [
+    {"name":"independent_zkp","implementation":"executable_per_product_batch_aggregate","notes":"whole-batch sums and total proof count/bytes recorded"},
+    {"name":"packed_uncompressed","implementation":"executable_fixed_q_product_rows"},
+    {"name":"class_only","implementation":"executable_circuit"},
+    {"name":"ingredient_only","implementation":"executable_circuit"},
+    {"name":"sparse_packed_strong","implementation":"executable_shape_specific_circuit_and_setup_accounting","coverage":"all_four_uniform_workloads_and_one_heterogeneous_workload"},
+    {"name":"generic_optimized_same_relation","implementation":"same_circuit_tie_by_construction"},
+    {"name":"medproof_v13_dispatcher","implementation":"compiled_constraint_selector_prototype"}
+  ],
+  "full_run_requires_explicit_user_approval": true
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_version": "medproof-e2-rxnorm-v1",
+  "status": "frozen_rxnorm_prescribable_product_workloads",
+  "terminology_release": "RxNorm Current Prescribable Content 2026-10-05",
+  "source_archive": "data/public_sources/RxNorm_full_prescribe_10052026.zip",
+  "source_md5": "a3bfab544c6a67c127ebcd10ab914aa9",
+  "frozen_workloads": "data/public_sources/rxnorm_prescribable_20261005_workloads.json",
+  "seeds": [11, 23, 37, 53, 71],
+  "workloads": [
+    {"name": "single_ingredient_low_reuse", "m": 8, "u": 8, "h": 8, "q": 1},
+    {"name": "combination_high_ingredient_reuse", "m": 8, "u": 8, "h": 4, "q": 4},
+    {"name": "complete_class_reuse", "m": 8, "u": 8, "h": 2, "q": 4},
+    {"name": "mode_boundary_candidate", "m": 8, "u": 8, "h": 4, "q": 2},
+    {"name": "heterogeneous_widths", "m": 8, "widths": [1, 2, 3, 4], "source": "actual RxNorm SCD concepts"}
+  ],
+  "baselines": [
+    {"name": "independent_zkp", "implementation": "executable_per_product_batch_aggregate"},
+    {"name": "packed_uncompressed", "implementation": "executable_fixed_q_product_rows"},
+    {"name": "class_only", "implementation": "executable_circuit"},
+    {"name": "ingredient_only", "implementation": "executable_circuit"},
+    {"name": "sparse_packed_strong", "implementation": "executable_shape_specific_circuit_and_setup_accounting"},
+    {"name": "generic_optimized_same_relation", "implementation": "same_circuit_tie_by_construction"},
+    {"name": "medproof_v13_dispatcher", "implementation": "compiled_constraint_selector_prototype"}
+  ],
+  "selection_policy": "Unique RxNorm SCD concepts with ingredient sets derived from the frozen prescribable subset. Batch composition and synthetic allergy alert values are seeded experimental inputs, not observed prescriptions or patients. No LLM model is trained or invoked.",
+  "full_run_requires_explicit_user_approval": true
+}
